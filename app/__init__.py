@@ -3,10 +3,15 @@ from flask_pymongo import PyMongo
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from app.models import User  # Import the User model
+from bson import ObjectId
 
 mongo = PyMongo()
 login_manager = LoginManager()
 bcrypt = Bcrypt()
+
+login_manager.login_view = "auth.login"  # Redirect unauthorized users to login page
+login_manager.login_message_category = "info"  # Optional: Flash message styling
+
 
 def create_app():
     app = Flask(__name__)
@@ -28,8 +33,11 @@ def create_app():
 
 @login_manager.user_loader
 def load_user(user_id):
-    """Load user from MongoDB using the user_id."""
-    user_data = mongo.db.users.find_one({"_id": user_id})
+    """Load user from MongoDB using user_id."""
+    from app import mongo  # Lazy import to avoid circular import
+
+    user_data = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     if user_data:
-        return User(**user_data, _id=user_data["_id"])
+        user_data["_id"] = str(user_data["_id"])  # Ensure _id is a string
+        return User(**user_data)
     return None

@@ -12,6 +12,10 @@ class User(UserMixin):
             self.set_password(password)  # Hash and store password
         else:
             self.password_hash = password_hash  # Use existing hash
+    
+    def get_id(self):
+        """Returns the user ID as a string for Flask-Login"""
+        return str(self.id)  # Ensure Flask-Login gets a string
 
     def set_password(self, password):
         """Hash the password before saving"""
