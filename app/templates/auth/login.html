@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Onze</title>
+    <title>Login | Onze Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <p>{{ form.email.label }} {{ form.email }}</p>
-        <p>{{ form.password.label }} {{ form.password }}</p>
-        <p>{{ form.submit }}</p>
-    </form>
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='ONZE_LOGO.jpg') }}" alt="Onze Studio Logo" class="logo">
+        <h2>Bem-vindo ao Onze Studio</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="input-group">
+                {{ form.email.label }}
+                {{ form.email(class="input-field") }}
+            </div>
+            <div class="input-group">
+                {{ form.password.label }}
+                {{ form.password(class="input-field") }}
+            </div>
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+    </div>
 </body>
 </html>

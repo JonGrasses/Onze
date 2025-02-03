@@ -1,0 +1,90 @@
+/* General Page Styling */
+body {
+    background: #222; /* Lighter than black for better contrast */
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Login Container */
+.login-container {
+    background: #333; /* Slightly lighter for better contrast */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 0, 0.4);
+    text-align: center;
+    width: 340px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Onze Studio Logo */
+.logo {
+    max-width: 140px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+/* Input Fields */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background: #444; /* Slightly lighter than before */
+    color: white;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    background: #555;
+    outline: none;
+}
+
+/* Button Styling */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #FFD700; /* Softer yellow */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
